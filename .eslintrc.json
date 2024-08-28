@@ -40,6 +40,7 @@
     "no-nested-ternary": "off", //중첩 연산자 허용
     "no-underscore-dangle": "off",
     "no-plusplus": "off", // ++연산자 허용
+    "no-alert": "off", //브라우저 alert 허용
     "@typescript-eslint/no-use-before-define": [
       //변수 아래쪽 선언 허용
       "error",
