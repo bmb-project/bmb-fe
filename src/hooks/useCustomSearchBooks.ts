@@ -1,6 +1,6 @@
-import { BookSearchInfo, SearchCategory } from '@/types/books'
+import { SearchInfo, BookSearchCategory } from '@/types/books'
 import { useEffect, useState } from 'react'
-import { selectItems } from '@/components/molecules/SearchInput'
+import { bookSelectItems } from '@/constants/search'
 import useCustomSearchParams from './useCustomSearchParams'
 
 export interface useCustomSearchBooksProps {
@@ -12,15 +12,15 @@ const useCustomSearchBooks = ({
 }: useCustomSearchBooksProps) => {
   const { searchParams, setSearchParams } = useCustomSearchParams()
 
-  const [currentSearchData, setSearchData] = useState<BookSearchInfo>({
-    category: selectItems.some(
+  const [currentSearchData, setSearchData] = useState<SearchInfo>({
+    category: bookSelectItems.some(
       (item) => item.category === searchParams.category,
     )
-      ? (searchParams.category as SearchCategory)
+      ? (searchParams.category as BookSearchCategory)
       : 'ALL',
     keyword: searchParams.keyword || '',
   })
-  const handleSearch = (data: BookSearchInfo) => {
+  const handleSearch = (data: SearchInfo) => {
     setSearchData(data)
     handlePageChange(1)
   }
@@ -38,10 +38,10 @@ const useCustomSearchBooks = ({
   useEffect(() => {
     if (searchParams.keyword !== currentSearchData.keyword) {
       setSearchData({
-        category: selectItems.some(
+        category: bookSelectItems.some(
           (item) => item.category === searchParams.category,
         )
-          ? (searchParams.category as SearchCategory)
+          ? (searchParams.category as BookSearchCategory)
           : 'ALL',
         keyword: searchParams.keyword || '',
       })

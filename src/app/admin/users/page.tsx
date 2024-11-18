@@ -5,7 +5,7 @@ import { GnbTemplate } from '@/components/templates/GnbTemplate'
 import {
   useCustomCheckRoleDialog,
   useCustomPagination,
-  useCustomSearchBooks,
+  useCustomSearchUsers,
 } from '@/hooks'
 import { Dialog } from '@/components/ui/dialog'
 import { AuthDialogContent } from '@/components/organisms/AuthDialogContent'
@@ -33,7 +33,7 @@ function Page() {
     requiredRole: 'ADMIN',
   })
   const { currentPage, handlePageChange, setTotalPage } = useCustomPagination()
-  const { currentSearchData, handleSearch } = useCustomSearchBooks({
+  const { currentSearchData, handleSearch } = useCustomSearchUsers({
     handlePageChange,
   })
   const [openLoanSheet, setOpenLoanSheet] = useState<boolean>(false)
